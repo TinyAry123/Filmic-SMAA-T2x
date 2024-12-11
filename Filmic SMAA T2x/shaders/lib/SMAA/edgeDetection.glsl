@@ -1,5 +1,5 @@
 const float SMAA_COLOR_EDGE_THRESHOLD = 0.0625;
-const float SMAA_DEPTH_EDGE_THRESHOLD = 0.25;
+const float SMAA_DEPTH_EDGE_THRESHOLD = 0.0625;
 
 void colorEdgeDetectionSMAA(out vec2 edges, sampler2D colorTex, vec2 uv) {
     ivec2 texelCoord = ivec2(textureSize(colorTex, 0) * uv);
