@@ -1,3 +1,6 @@
+const float SMAA_COLOR_EDGE_THRESHOLD = 0.0625;
+const float SMAA_DEPTH_EDGE_THRESHOLD = 0.25;
+
 void colorEdgeDetectionSMAA(out vec2 edges, sampler2D colorTex, vec2 uv) {
     ivec2 texelCoord = ivec2(textureSize(colorTex, 0) * uv);
     vec4 delta;
@@ -8,7 +11,7 @@ void colorEdgeDetectionSMAA(out vec2 edges, sampler2D colorTex, vec2 uv) {
     delta.x = distance(colorCenter, samplePoint(colorTex, texelCoord + ivec2(-1,  0)).xyz);
     delta.y = distance(colorCenter, samplePoint(colorTex, texelCoord + ivec2( 0, -1)).xyz);
 
-    edges = step(0.0625, delta.xy);
+    edges = step(SMAA_COLOR_EDGE_THRESHOLD, delta.xy);
     
     d.x = length(delta.xy);
 
@@ -55,7 +58,7 @@ void depthEdgeDetectionSMAA(out vec2 edges, sampler2D depthTex, vec2 uv) {
     delta.x = abs(depthCenter - samplePoint(depthTex, texelCoord + ivec2(-1,  0)).x);
     delta.y = abs(depthCenter - samplePoint(depthTex, texelCoord + ivec2( 0, -1)).x);
 
-    edges = step(0.0625, delta.xy);
+    edges = step(SMAA_DEPTH_EDGE_THRESHOLD, delta.xy);
     
     d.x = length(delta.xy);
 
