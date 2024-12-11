@@ -1,4 +1,4 @@
-const int SMAA_SEARCH_RADIUS         = 256;
+const int SMAA_SEARCH_RADIUS         = 16;
 const int SMAA_SEARCH_STEPS_DIAGONAL = int(SMAA_SEARCH_RADIUS * inversesqrt(2.0) + 0.5) - 1;
 
 void searchDiagonal1SMAA(out vec2 d, out vec2 e, sampler2D edgesTex, ivec2 texelCoord, ivec2 direction, vec2 rtSize, vec2 fragmentSize) {
