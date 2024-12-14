@@ -44,7 +44,7 @@ void colorEdgeDetectionSMAA(out vec2 edges, sampler2D colorTex, vec2 uv) {
             d.y     = delta.z;
         }
 
-        edges = step(mixCatmullRom(d.y, d.z, d.z, d.z, 0.3125), 2.0 * delta.xy);
+        edges = step(mixCatmullRom(d.x, d.y, d.z, d.z, 0.75), 2.0 * delta.xy);
     }
 }
 
@@ -91,6 +91,6 @@ void depthEdgeDetectionSMAA(out vec2 edges, sampler2D depthTex, vec2 uv) {
             d.y     = delta.z;
         }
 
-        edges = step(mixCatmullRom(d.y, d.z, d.z, d.z, 0.3125), 2.0 * delta.xy);
+        edges = step(mixCatmullRom(d.x, d.y, d.z, d.z, 0.75), 2.0 * delta.xy);
     }
 }
